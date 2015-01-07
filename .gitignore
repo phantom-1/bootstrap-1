@@ -10,10 +10,10 @@ lib-cov
 *.swo
 .DS_Store
 
+dist\assets
 pids
 logs
 results
-dist
 # test coverage files
 coverage/
 
@@ -21,3 +21,11 @@ node_modules
 npm-debug.log
 
 template/**/*.js
+.idea/.name
+.idea/bootstrap.iml
+.idea/encodings.xml
+.idea/misc.xml
+.idea/modules.xml
+.idea/scopes/scope_settings.xml
+.idea/vcs.xml
+.idea/workspace.xml
