@@ -205,6 +205,10 @@ angular.module( 'ui.bootstrap.tooltip', [ 'ui.bootstrap.position', 'ui.bootstrap
               return positionTooltip;
             }
 
+              scope.hide = function() {
+                $timeout(hide());
+              };
+
             // Hide the tooltip popup element.
             function hide() {
               // First things first: we don't show it anymore.

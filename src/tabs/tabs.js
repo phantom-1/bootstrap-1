@@ -36,6 +36,10 @@ angular.module('ui.bootstrap.tabs', [])
   };
 
   ctrl.removeTab = function removeTab(tab) {
+    if($scope.destroying) {
+        tabs = [];
+        return;
+    }
     var index = tabs.indexOf(tab);
     //Select a new tab if the tab to be removed is selected
     if (tab.active && tabs.length > 1) {
@@ -45,6 +49,11 @@ angular.module('ui.bootstrap.tabs', [])
     }
     tabs.splice(index, 1);
   };
+
+  // ADressin: Have to check if we are destroying until this is resolved: https://github.com/angular-ui/bootstrap/issues/2155
+  $scope.$on('$destroy', function() {
+    $scope.destroying = true;
+  });
 }])
 
 /**

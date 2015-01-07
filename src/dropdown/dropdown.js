@@ -28,10 +28,12 @@ angular.module('ui.bootstrap.dropdown', [])
     }
   };
 
+  // ADressin: https://github.com/angular-ui/bootstrap/pull/2140
   var closeDropdown = function( evt ) {
-    if (evt && evt.isDefaultPrevented()) {
-        return;
-    }
+      var toggleElement = openScope.getToggleElement();
+          if ( evt && toggleElement && toggleElement[0].contains(evt.target) ) {
+          return;
+      }
 
     openScope.$apply(function() {
       openScope.isOpen = false;
@@ -74,6 +76,10 @@ angular.module('ui.bootstrap.dropdown', [])
   // Allow other directives to watch status
   this.isOpen = function() {
     return scope.isOpen;
+  };
+
+  scope.getToggleElement = function() {
+    return self.toggleElement;
   };
 
   scope.focusToggleElement = function() {
